@@ -105,8 +105,7 @@ public class listaEncadeada<T> {
                 return contador;
             } else {
                 contador++;
-            }
-
+            }   
         }
         throw new Exception("Este elemento não está na lista.");
 
@@ -136,4 +135,10 @@ public class listaEncadeada<T> {
         }
     
     }
+
+    public int getNumElementos() {
+        return numElementos;
+    }
+    
+    
 }
