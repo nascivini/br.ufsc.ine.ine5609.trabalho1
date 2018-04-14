@@ -43,14 +43,4 @@ public class dataBox <T> {
         return this.enderecoProximo;
     }
     
-    @Override
-    public boolean equals(Object obj){
-        if (obj instanceof dataBox){
-            if(((dataBox) obj).getData() == this.getData()){
-                return true;
-            }
-        }
-        return false;
-    }
-    
 }
