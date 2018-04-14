@@ -12,7 +12,7 @@ public class main {
      */
     public static void main(String[] args) throws Exception {
         
-        listaEncadeada teste = new listaEncadeada();
+        ListaEncadeada teste = new ListaEncadeada();
         
         teste.inserir("um");
         System.out.println(teste.buscar(0).getData());

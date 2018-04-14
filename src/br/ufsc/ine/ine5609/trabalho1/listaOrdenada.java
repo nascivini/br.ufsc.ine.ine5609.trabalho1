@@ -4,7 +4,7 @@ package br.ufsc.ine.ine5609.trabalho1;
  *
  * @author Vinicius Nascimento
  */
-public class listaOrdenada extends listaEncadeada {
+public class listaOrdenada extends ListaEncadeada {
     
     public int ultimoIdGerado;
     
@@ -14,7 +14,7 @@ public class listaOrdenada extends listaEncadeada {
     }
     
     public void inserirOrdenado(Object dado){
-        dataBox nova = new dataBox();
+        DataBox nova = new DataBox();
         nova.setData(dado);
     }
     
@@ -23,7 +23,7 @@ public class listaOrdenada extends listaEncadeada {
         
     }
     
-    public dataBox buscar (Object id){
+    public DataBox buscar (Object id){
         return null;
     }
     
