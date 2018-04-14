@@ -97,7 +97,7 @@ public class listaEncadeada<T> {
         }
     }
 
-    public boolean excluir(Object toBeExcluded) throws Exception {
+    public void excluir(Object toBeExcluded) throws Exception {
         if (size == 0) {
             throw new Exception("A lista está vazia! Insira um elemento antes de excluí-lo.");
         } else {
@@ -113,10 +113,8 @@ public class listaEncadeada<T> {
                 if (atual.getData().equals(toBeExcluded)) {
                     atual.getEnderecoAnterior().setEnderecoProximo(atual.getEnderecoProximo());
                     atual.getEnderecoProximo().setEnderecoAnterior(atual.getEnderecoAnterior());
-                    return true;
                 }
             }
-            return false;
         }
     }
 

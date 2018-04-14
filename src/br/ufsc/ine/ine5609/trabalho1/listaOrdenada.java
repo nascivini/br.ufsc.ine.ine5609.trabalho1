@@ -18,6 +18,16 @@ public class listaOrdenada extends listaEncadeada {
         nova.setDataBox(dado);
     }
     
+    @Override
+    public void excluir (Object id){
+        
+    }
+    
+    @Override
+    public dataBox<T> buscar (Object id){
+    
+    }
+    
     public int geraNovoId(){
         this.ultimoIdGerado++;
         return this.ultimoIdGerado;
