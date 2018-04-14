@@ -15,17 +15,16 @@ public class listaOrdenada extends listaEncadeada {
     
     public void inserirOrdenado(Object dado){
         dataBox nova = new dataBox();
-        nova.setDataBox(dado);
+        nova.setData(dado);
     }
     
-    @Override
+    
     public void excluir (Object id){
         
     }
     
-    @Override
-    public dataBox<T> buscar (Object id){
-    
+    public dataBox buscar (Object id){
+        return null;
     }
     
     public int geraNovoId(){
