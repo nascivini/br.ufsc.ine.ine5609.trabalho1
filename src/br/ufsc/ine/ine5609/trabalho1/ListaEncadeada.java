@@ -32,18 +32,32 @@ public class ListaEncadeada<T extends Comparable<T>> {
                     primeiro = novo;
                     novo.setId(0);
                     numElementos++;
+                    DataBox<T> controlador = new DataBox();
+                    controlador = caixinha;
                     for(int i = 0; i < numElementos; i++) {
-                        
+                        controlador.setId(controlador.getId() + 1);
+                        controlador = controlador.getEnderecoProximo();
+                        if(controlador == null)
+                            break;
                     }
-            }else{
+            } else {
                 while(novo.compareTo(caixinha) > 0){
                         maiorOuIgual = caixinha;
                         caixinha = caixinha.getEnderecoProximo();
                         if(caixinha == null)
-                                break;
+                            break;
                 }
                 maiorOuIgual.setEnderecoProximo(novo);
+                novo.setId(caixinha.getId());
                 novo.setEnderecoProximo(caixinha);
+                DataBox<T> controlador = new DataBox();
+                controlador = caixinha;
+                for(int i = 0; i < numElementos; i++) {
+                    controlador.setId(controlador.getId() + 1);
+                    controlador = controlador.getEnderecoProximo();
+                    if(controlador == null)
+                        break;
+                }
             }
         }
     }
@@ -56,14 +70,9 @@ public class ListaEncadeada<T extends Comparable<T>> {
             DataBox atual = this.buscar(posicao);
             
             if(atual.equals(primeiro)){
-               novoDado.setEnderecoAnterior(null);
                novoDado.setEnderecoProximo(primeiro);
-               primeiro.setEnderecoAnterior(novoDado);
                primeiro = novoDado;
             }
-            atual.getEnderecoAnterior().setEnderecoProximo(novoDado);
-            novoDado.setEnderecoAnterior(atual.getEnderecoAnterior());
-            atual.setEnderecoAnterior(novoDado);
             numElementos++;
         }
         catch(Exception e){
@@ -80,13 +89,9 @@ public class ListaEncadeada<T extends Comparable<T>> {
             
             if(atual.equals(ultimo)){
                novoDado.setEnderecoProximo(null);
-               novoDado.setEnderecoAnterior(ultimo);
                ultimo.setEnderecoProximo(novoDado);
                ultimo = novoDado;
             }
-            atual.getEnderecoAnterior().setEnderecoProximo(novoDado);
-            novoDado.setEnderecoAnterior(atual.getEnderecoAnterior());
-            atual.setEnderecoAnterior(novoDado);
             numElementos++;
         }
         catch(Exception e){
@@ -127,19 +132,9 @@ public class ListaEncadeada<T extends Comparable<T>> {
             DataBox atual = this.buscar(posicao);
             
             if(atual.equals(primeiro)){
-                primeiro.getEnderecoProximo().setEnderecoAnterior(null);
                 primeiro = atual;
             }
             
-            else if(atual.equals(ultimo)){
-                ultimo.getEnderecoAnterior().setEnderecoProximo(null);
-                ultimo = atual.getEnderecoAnterior();
-            }
-            
-            else{
-                atual.getEnderecoAnterior().setEnderecoProximo(atual.getEnderecoProximo());
-                atual.getEnderecoProximo().setEnderecoAnterior(atual.getEnderecoAnterior());
-            }
             numElementos--;
         }
         catch(Exception e){
