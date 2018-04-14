@@ -111,4 +111,29 @@ public class listaEncadeada<T> {
         throw new Exception("Este elemento não está na lista.");
 
     }
+    
+    public void excluir (int posicao){
+        try{
+            dataBox atual = this.buscar(posicao);
+            
+            if(atual.equals(primeiro)){
+                primeiro.getEnderecoProximo().setEnderecoAnterior(null);
+                primeiro = atual;
+            }
+            
+            else if(atual.equals(ultimo)){
+                ultimo.getEnderecoAnterior().setEnderecoProximo(null);
+            }
+            
+            else{
+                atual.getEnderecoAnterior().setEnderecoProximo(atual.getEnderecoProximo());
+                atual.getEnderecoProximo().setEnderecoAnterior(atual.getEnderecoAnterior());
+            }
+            numElementos--;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    
+    }
 }
