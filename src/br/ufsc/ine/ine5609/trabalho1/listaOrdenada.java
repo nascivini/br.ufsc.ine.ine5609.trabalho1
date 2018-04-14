@@ -19,4 +19,9 @@ public class listaOrdenada extends listaEncadeada {
     
         
     }
+    
+    public int geraNovoId(){
+        this.ultimoIdGerado++;
+        return this.ultimoIdGerado;
+    }
 }
