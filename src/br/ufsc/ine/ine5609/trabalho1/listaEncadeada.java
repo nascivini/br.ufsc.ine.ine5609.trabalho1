@@ -57,6 +57,29 @@ public class listaEncadeada<T> {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void inserirDepoisDe(T novo, int posicao){
+        dataBox novoDado = new dataBox();
+        novoDado.setData(novo);
+        
+        try{
+            dataBox atual = this.buscar(posicao);
+            
+            if(atual.equals(ultimo)){
+               novoDado.setEnderecoProximo(null);
+               novoDado.setEnderecoAnterior(ultimo);
+               ultimo.setEnderecoProximo(novoDado);
+               ultimo = novoDado;
+            }
+            atual.getEnderecoAnterior().setEnderecoProximo(novoDado);
+            novoDado.setEnderecoAnterior(atual.getEnderecoAnterior());
+            atual.setEnderecoAnterior(novoDado);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }    
+    
+    }
 
     public dataBox buscar(int posicao) throws Exception {
         if (numElementos >= posicao) {
