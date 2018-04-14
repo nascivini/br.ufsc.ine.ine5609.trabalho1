@@ -19,7 +19,7 @@ public class dataBox <T> {
         this.enderecoProximo = null;
     }
     
-    public void setDataBox(T value){
+    public void setData(T value){
         this.data = value;
     }
     
