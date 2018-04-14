@@ -18,7 +18,7 @@ public class ListaEncadeada<T extends Comparable<T>> {
     }
 
     public void inserir(T dado) {
-        if(primeiro == null) {
+        if (primeiro == null) {
             primeiro = new DataBox(dado);
             primeiro.setId(0);
             ultimo = primeiro;
@@ -27,77 +27,111 @@ public class ListaEncadeada<T extends Comparable<T>> {
             DataBox<T> caixinha = primeiro;
             DataBox<T> maiorOuIgual = caixinha;
             DataBox<T> novo = new DataBox<T>(dado);
-            if(novo.compareTo(caixinha)<= 0){
-                    novo.setEnderecoProximo(caixinha);
-                    primeiro = novo;
-                    novo.setId(0);
-                    numElementos++;
-                    DataBox<T> controlador = new DataBox();
-                    controlador = caixinha;
-                    for(int i = 0; i < numElementos; i++) {
-                        controlador.setId(controlador.getId() + 1);
-                        controlador = controlador.getEnderecoProximo();
-                        if(controlador == null)
-                            break;
+            if (novo.compareTo(caixinha) <= 0) {
+                novo.setEnderecoProximo(caixinha);
+                primeiro = novo;
+                novo.setId(0);
+                numElementos++;
+                DataBox<T> controlador = new DataBox();
+                controlador = caixinha;
+                for (int i = 0; i < numElementos; i++) {
+                    controlador.setId(controlador.getId() + 1);
+                    controlador = controlador.getEnderecoProximo();
+                    if (controlador == null) {
+                        break;
                     }
+                }
             } else {
-                while(novo.compareTo(caixinha) > 0){
-                        maiorOuIgual = caixinha;
-                        caixinha = caixinha.getEnderecoProximo();
-                        if(caixinha == null)
-                            break;
+                while (novo.compareTo(caixinha) > 0) {
+                    maiorOuIgual = caixinha;
+                    caixinha = caixinha.getEnderecoProximo();
+                    if (caixinha == null) {
+                        break;
+                    }
                 }
                 maiorOuIgual.setEnderecoProximo(novo);
                 novo.setId(caixinha.getId());
                 novo.setEnderecoProximo(caixinha);
                 DataBox<T> controlador = new DataBox();
                 controlador = caixinha;
-                for(int i = 0; i < numElementos; i++) {
+                for (int i = 0; i < numElementos; i++) {
                     controlador.setId(controlador.getId() + 1);
                     controlador = controlador.getEnderecoProximo();
-                    if(controlador == null)
+                    if (controlador == null) {
                         break;
+                    }
                 }
             }
         }
     }
 
-    public void inserirAntesDe(T novo, int posicao) {
-        DataBox novoDado = new DataBox();
-        novoDado.setData(novo);
-        
-        try{
-            DataBox atual = this.buscar(posicao);
-            
-            if(atual.equals(primeiro)){
-               novoDado.setEnderecoProximo(primeiro);
-               primeiro = novoDado;
+    public void inserirAntesDe(T dado, int id) {
+        try {
+            DataBox atual = this.buscar(id);
+            DataBox nova = new DataBox(dado);
+
+            DataBox<T> maiorOuIgual = atual;
+
+            if (!atual.equals(primeiro)) {
+                while (nova.compareTo(atual) > 0) {
+                    maiorOuIgual = atual;
+                    atual = atual.getEnderecoProximo();
+                    if (atual == null) {
+                        break;
+                    }
+                }
+                maiorOuIgual.setEnderecoProximo(nova);
+                nova.setId(atual.getId());
+                nova.setEnderecoProximo(atual);
+                DataBox<T> controlador = new DataBox();
+                controlador = atual;
+                
+                for (int i = 0; i < numElementos; i++) {
+                    controlador.setId(controlador.getId() + 1);
+                    controlador = controlador.getEnderecoProximo();
+                    if (controlador == null) {
+                        break;
+                    }
+                }
             }
-            numElementos++;
-        }
-        catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
-    
-    public void inserirDepoisDe(T novo, int posicao){
-        DataBox novoDado = new DataBox();
-        novoDado.setData(novo);
-        
-        try{
-            DataBox atual = this.buscar(posicao);
+
+    public void inserirDepoisDe(T dado, int id) {
+       try {
+            DataBox atual = this.buscar(id);
+            DataBox nova = new DataBox(dado);
+            DataBox<T> maiorOuIgual = atual;
+                while (nova.compareTo(atual) > 0) {
+                    maiorOuIgual = atual;
+                    atual = atual.getEnderecoProximo();
+                    if (atual == null) {
+                        break;
+                    }
+                }
+                maiorOuIgual.setEnderecoProximo(nova);
+                nova.setId(atual.getId());
+                nova.setEnderecoProximo(atual);
+                DataBox<T> controlador = new DataBox();
+                controlador = atual;
+                
+                for (int i = 0; i < numElementos; i++) {
+                    controlador.setId(controlador.getId() + 1);
+                    controlador = controlador.getEnderecoProximo();
+                    if (controlador == null) {
+                        break;
+                    }
+                }
             
-            if(atual.equals(ultimo)){
-               novoDado.setEnderecoProximo(null);
-               ultimo.setEnderecoProximo(novoDado);
-               ultimo = novoDado;
-            }
-            numElementos++;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }    
-    
+        }
+
+
     }
 
     public DataBox buscar(int posicao) throws Exception {
@@ -121,31 +155,29 @@ public class ListaEncadeada<T extends Comparable<T>> {
                 return contador;
             } else {
                 contador++;
-            }   
+            }
         }
         throw new Exception("Este elemento não está na lista.");
 
     }
-    
-    public void excluir (int posicao){
-        try{
+
+    public void excluir(int posicao) {
+        try {
             DataBox atual = this.buscar(posicao);
-            
-            if(atual.equals(primeiro)){
+
+            if (atual.equals(primeiro)) {
                 primeiro = atual;
             }
-            
+
             numElementos--;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    
+
     }
 
     public int getNumElementos() {
         return numElementos;
     }
-    
-    
+
 }
