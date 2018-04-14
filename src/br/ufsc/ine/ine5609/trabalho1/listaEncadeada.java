@@ -52,6 +52,7 @@ public class listaEncadeada<T> {
             atual.getEnderecoAnterior().setEnderecoProximo(novoDado);
             novoDado.setEnderecoAnterior(atual.getEnderecoAnterior());
             atual.setEnderecoAnterior(novoDado);
+            numElementos++;
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -74,6 +75,7 @@ public class listaEncadeada<T> {
             atual.getEnderecoAnterior().setEnderecoProximo(novoDado);
             novoDado.setEnderecoAnterior(atual.getEnderecoAnterior());
             atual.setEnderecoAnterior(novoDado);
+            numElementos++;
         }
         catch(Exception e){
             System.out.println(e.getMessage());

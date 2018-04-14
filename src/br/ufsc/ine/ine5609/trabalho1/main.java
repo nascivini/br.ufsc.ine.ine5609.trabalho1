@@ -13,20 +13,17 @@ public class main {
     public static void main(String[] args) throws Exception {
         
         listaEncadeada teste = new listaEncadeada();
-        teste.insereNoComeco("um");
-        System.out.println(teste.acessarAtual().getData());        
-        teste.insereNoComeco("dois");
-        System.out.println(teste.acessarAtual().getData());        
-        teste.insereNoComeco("três");
-        System.out.println(teste.acessarAtual().getData());        
-        teste.insereNoComeco("quatro");
-        System.out.println(teste.acessarAtual().getData());        
-        teste.insereNoComeco("cinco");
-        System.out.println(teste.acessarAtual().getData());
-        teste.insereNoComeco("seis");
-        System.out.println(teste.acessarAtual().getData());
-        teste.insereNoComeco("sete");
-        System.out.println(teste.acessarAtual().getData());
+        
+        teste.inserir("um");
+        System.out.println(teste.buscar(0).getData());
+        teste.inserir("dois");
+        System.out.println(teste.buscar(1).getData());
+        teste.inserir("três");
+        System.out.println(teste.buscar(2).getData());
+        teste.inserir("quatro");
+        System.out.println(teste.buscar(3).getData());
+        teste.inserir("cinco");
+        System.out.println(teste.buscar(4).getData());
     }
     
 }
