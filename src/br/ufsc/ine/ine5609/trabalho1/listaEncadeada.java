@@ -32,8 +32,9 @@ public class listaEncadeada<T> {
                 novoDado.setEnderecoAnterior(ultimo);
                 ultimo = novoDado;
             }
-            numElementos++;
+            
         }
+        numElementos++;
     }
 
     public void inserirAntesDe(T novo, int posicao) {
