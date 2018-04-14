@@ -16,8 +16,6 @@ public class listaOrdenada extends listaEncadeada {
     public void inserirOrdenado(Object dado){
         dataBox nova = new dataBox();
         nova.setDataBox(dado);
-    
-        
     }
     
     public int geraNovoId(){
