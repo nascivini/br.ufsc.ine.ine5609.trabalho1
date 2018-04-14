@@ -122,6 +122,7 @@ public class listaEncadeada<T> {
             
             else if(atual.equals(ultimo)){
                 ultimo.getEnderecoAnterior().setEnderecoProximo(null);
+                ultimo = atual.getEnderecoAnterior();
             }
             
             else{

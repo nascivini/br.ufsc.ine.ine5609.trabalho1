@@ -25,6 +25,7 @@ public class main {
         teste.inserir("cinco");
         System.out.println(teste.buscar(4).getData());
         teste.excluir(4);
+        teste.excluir(3);
         
         for(int i = 0; i < teste.getNumElementos(); i++){
             System.out.println(teste.buscar(i).getData());
