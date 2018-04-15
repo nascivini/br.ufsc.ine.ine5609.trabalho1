@@ -2,7 +2,7 @@ package br.ufsc.ine.ine5609.trabalho1;
 
 /**
  *
- * @author Marco Aurelio Geremias
+ * @author Vinicius Nascimento, Marco Geremias
  */
 public class Pessoa implements Comparable<Pessoa>{
 
@@ -19,10 +19,10 @@ public class Pessoa implements Comparable<Pessoa>{
     }
     
     public Pessoa(String nome, int idade, int altura, int peso) {
-        this.altura = 0;
-        this.peso = 0;
-        this.idade = 0;
-        this.nome = null;
+        this.altura = altura;
+        this.peso = peso;
+        this.idade = idade;
+        this.nome = nome;
     }
 
     public String getNome() {
@@ -62,6 +62,11 @@ public class Pessoa implements Comparable<Pessoa>{
         int retorno;
         retorno = (this.altura <= o.getAltura()) ? -1 : 1;
         return retorno;
+    }
+    
+    @Override
+    public String toString() {
+        return "Nome: " + this.nome + " | Idade: " + this.idade + " | Altura: " + this.altura + " | Peso: " + this.peso;
     }
     
 }

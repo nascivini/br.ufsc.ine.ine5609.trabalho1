@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufsc.ine.ine5609.trabalho1;
 
 /**
  *
- * @author Vinicius Nascimento  
+ * @author Vinicius Nascimento, Marco Geremias  
  * @param <T>  
  */
-public class DataBox <T extends Comparable<T>> implements Comparable<DataBox<T>> {
+public class DataBox <T extends Comparable<T>> implements Comparable <DataBox<T>> {
     private int id;
     private T data;
     private DataBox enderecoProximo;
@@ -50,10 +45,11 @@ public class DataBox <T extends Comparable<T>> implements Comparable<DataBox<T>>
     public void setId(int id) {
         this.id = id;
     }
-    
+
     @Override
     public int compareTo(DataBox<T> o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return data.compareTo(o.getData());
     }
+    
     
 }

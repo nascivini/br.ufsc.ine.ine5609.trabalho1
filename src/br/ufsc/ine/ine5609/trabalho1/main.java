@@ -3,7 +3,7 @@ package br.ufsc.ine.ine5609.trabalho1;
 
 /**
  *
- * @author Vinicius Nascimento
+ * @author Vinicius Nascimento, Marco Geremias
  */
 public class main {
 
@@ -11,25 +11,32 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
+    
+    //Bateria de Testes 1    
+        // Bateria de Testes na Lista, com tipos compostos
+        ListaOrdenada teste = new ListaOrdenada();
         
-        ListaEncadeada teste = new ListaEncadeada();
+        // Inserção e Exclusão Imediata de Objetos na Lista (com leitura)
+        Pessoa Vinicius = new Pessoa("Vinicius", 18, 179, 60);
+        Pessoa Marco = new Pessoa("Marco", 23, 174, 108);
+        Pessoa Marina = new Pessoa("Marina", 23, 175, 57);
         
-        teste.inserir("um");
-        System.out.println(teste.buscar(0).getData());
-        teste.inserir("dois");
-        System.out.println(teste.buscar(1).getData());
-        teste.inserir("três");
-        System.out.println(teste.buscar(2).getData());
-        teste.inserir("quatro");
-        System.out.println(teste.buscar(3).getData());
-        teste.inserir("cinco");
-        System.out.println(teste.buscar(4).getData());
-        teste.excluir(4);
-        teste.excluir(3);
+        //
+        teste.inserir(Vinicius);
+        System.out.println(teste.toStringAll()[0]);
+        teste.inserir(Marco);
+        System.out.println(teste.toStringAll()[1]);
+        teste.inserir(Marina);
+        System.out.println(teste.toStringAll()[2]);
         
-        for(int i = 0; i < teste.getNumElementos(); i++){
-            System.out.println(teste.buscar(i).getData());
-        }
+        teste.excluir(2);
+        System.out.println(teste.toStringAll()[1]);
+        teste.excluir(1);
+        System.out.println(teste.toStringAll()[1]);
+        teste.excluir(0);
+        
+        System.out.println(teste.toStringAll()[0]);
+    
     }
     
 }
