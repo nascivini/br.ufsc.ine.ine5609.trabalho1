@@ -40,8 +40,7 @@ public class ListaOrdenada<T extends Comparable<T>> implements ListaEncadeada {
                         break;
                     }
                 }
-            } 
-            else {
+            } else {
                 while (novo.compareTo(caixinha) > 0) {
                     maiorOuIgual = caixinha;
                     caixinha = caixinha.getEnderecoProximo();
@@ -66,17 +65,17 @@ public class ListaOrdenada<T extends Comparable<T>> implements ListaEncadeada {
         }
     }
 
-    public DataBox buscar(int posicao) throws Exception {
-        if (numElementos >= posicao + 1) {
+    public DataBox buscar(int id) throws Exception {
+        if (numElementos >= id + 1) {
             int contador = 0;
             DataBox atual = primeiro;
-            while (contador < posicao) {
+            while (contador < id) {
                 contador++;
                 atual = atual.getEnderecoProximo();
             }
             return atual;
         }
-        throw new Exception("Não há um elemento na posição " + posicao);
+        throw new Exception("Não há um elemento na posição " + id);
     }
 
     public int retornaPosicao(DataBox elemento) throws Exception {
@@ -122,9 +121,9 @@ public class ListaOrdenada<T extends Comparable<T>> implements ListaEncadeada {
                         break;
                     }
                 }
-            numElementos--;
+                numElementos--;
             }
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -134,19 +133,23 @@ public class ListaOrdenada<T extends Comparable<T>> implements ListaEncadeada {
         return numElementos;
     }
 
-    
-    public String [] toStringAll() {
-        DataBox controlador = new DataBox();
-        controlador = primeiro;
-        String[] retorno = new String[numElementos];
-        for (int i = 0; i < numElementos; i++) {
-             retorno[i] = controlador.getData().toString();
-             controlador = controlador.getEnderecoProximo();
-            if (controlador == null) {
-                break;
+    public String printaLista() {
+        if (numElementos > 0) {
+            DataBox atual = primeiro;
+            for (int i = 0; i < numElementos; i++) {
+                System.out.println("ID: " + atual.getId() + "| " + atual.getData().toString());
+                if(atual.getEnderecoProximo() != null){
+                    atual = atual.getEnderecoProximo();
+                }
+                else{
+                    break;
+                }
             }
         }
-        return retorno;
+        else{
+            System.out.println("Lista vazia!");
+        }
+        return "";
     }
 
     @Override

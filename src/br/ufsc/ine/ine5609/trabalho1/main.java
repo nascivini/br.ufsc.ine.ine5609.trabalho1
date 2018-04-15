@@ -21,21 +21,22 @@ public class main {
         Pessoa Marco = new Pessoa("Marco", 23, 174, 108);
         Pessoa Marina = new Pessoa("Marina", 23, 175, 57);
         
-        //
+        //Inserção e Verificação
         teste.inserir(Vinicius);
-        System.out.println(teste.toStringAll()[0]);
+        System.out.println(teste.printaLista());
         teste.inserir(Marco);
-        System.out.println(teste.toStringAll()[1]);
+        System.out.println(teste.printaLista());
         teste.inserir(Marina);
-        System.out.println(teste.toStringAll()[2]);
+        System.out.println(teste.printaLista());
         
+        //Exclusão e Verificação
         teste.excluir(2);
-        System.out.println(teste.toStringAll()[1]);
+        System.out.println(teste.printaLista());
         teste.excluir(1);
-        System.out.println(teste.toStringAll()[1]);
+        System.out.println(teste.printaLista());
         teste.excluir(0);
         
-        System.out.println(teste.toStringAll()[0]);
+        System.out.println(teste.printaLista());
     
     }
     
